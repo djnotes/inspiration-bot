@@ -11,6 +11,8 @@ app = Client("bot")
 
 audience_ids = ['djnotes']
 
+start_time = time.time()
+
 def randomInspiration():
     phrases = [
         "Wake up and work",
@@ -24,6 +26,7 @@ async def job():
     if(app.is_initialized):
         for id in audience_ids: 
             await app.send_message(id, randomInspiration())
+            await app.send_message(id, f"My age: {time.time() - start_time} seconds")
 
 
 scheduler = AsyncIOScheduler()
