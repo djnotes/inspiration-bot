@@ -38,8 +38,7 @@ async def job():
 
 
 scheduler = AsyncIOScheduler()
-scheduler.add_job(job, "interval", seconds = 5)
-# scheduler.add_job(job, "interval", seconds = 86400)
+scheduler.add_job(job, "interval", seconds = 86400)
 
 scheduler.start()
 
