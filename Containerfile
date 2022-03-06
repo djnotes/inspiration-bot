@@ -1,4 +1,4 @@
-FROM python:3
+FROM docker.io/library/python:3.10
 
 RUN pip3 install pyrogram tgcrypto apscheduler
 
