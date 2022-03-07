@@ -10,9 +10,9 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 import random
 
-app = Client("session/bot", api_id = api_id, api_hash=api_hash)
 api_id = os.getenv('API_ID')
 api_hash = os.getenv('API_HASH')
+app = Client("session/bot", api_id = api_id, api_hash=api_hash)
 
 subscriber_id = ''
 subscriber_telegram_id = ''
