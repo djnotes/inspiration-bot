@@ -1,4 +1,3 @@
 *.session
 session/
-ENV
-env*
+env

@@ -22,15 +22,7 @@ subscriber_telegram_id = ''
 start_time = time.time()
 
 def randomInspiration():
-    phrases = [
-        "Wake up and work",
-        "Every second matters",
-        "Today, you will go one step closer to your goal",
-        "Wake up! Today is an important day",
-        "Every big goal starts with a dream. Move toward your dream!",
-
-    ]
-    return phrases[random.randint(0, phrases.__len__() - 1)]
+    pass
 
 async def job():
     global subscriber_telegram_id
