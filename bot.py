@@ -2,14 +2,17 @@ import time
 import math
 import os
 from sqlalchemy import create_engine
-
+from sqlalchemy.orm import Session
 from pyrogram import Client, filters
+from pyrogram.types import Message
 
 
 
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 import random
+
+from types import Inspiration
 
 api_id = os.getenv('API_ID')
 api_hash = os.getenv('API_HASH')
@@ -48,7 +51,7 @@ scheduler.add_job(job, "interval", seconds = 3)
 
 
 @app.on_message(filters.private)
-async def handle(client, message):
+async def handle(client, message: Message):
     global scheduler
     global subscriber_id
     global subscriber_telegram_id
@@ -58,6 +61,14 @@ async def handle(client, message):
         await client.send_message('djnotes', f'Inspiration sent to {subscriber_id}')
         #TODO: Get user's Telegram ID and save it in receiver_telegram_id
         #TODO: Save the user in database
+    if (message.text == '/send'):
+        # Simple use-case to test functionality by sending a random inspiration to the panel user
+        with Session(engine) as session:
+          inspirations = session.query(Inspiration).all()
+          selected = int (random.random() * len(inspirations))
+          message.reply(inspirations[selected].text)
+        
+          
         
 
     elif(message.text == '/stop'):
@@ -77,3 +88,5 @@ databaseEnv = open(os.getenv("MARIADB_DATABASE_FILE")).read()
 engine = create_engine(f"mysql+pymysql://{userEnv}:{passwordEnv}@db/{databaseEnv}", echo=True, future=True)
 
 
+
+    
