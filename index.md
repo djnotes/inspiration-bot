@@ -1,37 +1,22 @@
-## Welcome to GitHub Pages
+# Inspiration Bot
 
-You can use the [editor on GitHub](https://github.com/djnotes/inspiration-bot/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+## Introduction
+Inspiration Bot is a tool that helps users to get through difficult times by sending them inspirational messages in certain periods. 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Pre-requisites
+The prerequisites for the bot is Python and MySQL database. Using the container version using the included Dockerfile and docker-compose is recommended. 
 
-### Markdown
+## Deployment 
+Simply download the image from ghcr.io/djnotes/inspiration-bot:main or build locally using the included Dockerfile. 
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+![light-bulb](https://user-images.githubusercontent.com/9320387/163729167-bc0e43d2-21de-419c-bb73-59b7d59ffa26.jpg)
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
 
-- Bulleted
-- List
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+*Copyright (C) 2022 - Mehdi Haghgoo*
 ```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/djnotes/inspiration-bot/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Note: This application is distributed with the MIT License. 
+You are free to modify and redistribute the code as long as you
+distribute a version of the source code along with the code.
+```
