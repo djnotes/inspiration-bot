@@ -34,7 +34,7 @@ async def job():
         elif  3600 <= lifetime and lifetime <= 86400:
             message = f"My age: {math.floor(lifetime / 3600)} hours"
         else:
-            message = f"My age: {math.floor(lifetime / 86400)} days"
+                message = f"My age: {math.floor(lifetime / 86400)} days"
         await app.send_message(subscriber_id, randomInspiration() +  f"\n{message}")
         peer = subscriber_telegram_id if subscriber_telegram_id else subscriber_id
         await app.send_message('djnotes', f'Inspiration sent to {peer}')

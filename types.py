@@ -1,3 +1,4 @@
+import os
 from sqlalchemy import Column
 from sqlalchemy import ForeignKey
 from sqlalchemy import Integer
@@ -14,7 +15,7 @@ class User(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(30))
     addresses = relationship(
-        "Address", back_populates="user", cascade="all, delete-orphan"
+        "Inspiration", back_populates="user", cascade="all, delete-orphan"
     )
     def __repr__(self):
         return f"User(id={self.id!r}, name={self.name!r})"
@@ -29,10 +30,6 @@ class Inspiration(Base):
         return f"Inspiration(id={self.id!r}, tex={self.text!r})"
 
 
-# Load credentials
-userEnv = open("env/mariadb-user").read()
-passwordEnv = open("env/mariadb-password").read()
-databaseEnv = open("env/mariadb-database").read()
 
 
-engine = create_engine(f"mysql+pymysql://{userEnv}:{passwordEnv}@db/{databaseEnv}", echo=True, future=True)
+Base.metadata.create_all()
