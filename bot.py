@@ -10,8 +10,12 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 import random
 
-api_id = os.getenv('API_ID')
-api_hash = os.getenv('API_HASH')
+from configparser import ConfigParser
+
+parser = ConfigParser(os.getenv('APP_CONF_FILE'))
+api_id = parser.get('API_ID')
+api_hash = parser.get('API_HASH')
+
 app = Client("session/bot", api_id = api_id, api_hash=api_hash)
 
 subscriber_id = ''
