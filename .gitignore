@@ -2,3 +2,4 @@
 session/
 env
 local/
+__pycache__/
