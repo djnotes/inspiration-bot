@@ -1,13 +1,15 @@
-FROM ghcr.io/djnotes/pyrogram-image:latest
+FROM docker.io/library/alpine
 
-RUN pip3 install pyrogram tgcrypto apscheduler SQLAlchemy PyMySQL
+RUN pip3 install apscheduler  PyMySQL
+
+RUN pip3 install --pre SQLAlchemy
 
 COPY . /app
 
 WORKDIR /app
 
 
-CMD ["python","bot.py"]
+CMD ["python3","bot.py"]
 
 
 
