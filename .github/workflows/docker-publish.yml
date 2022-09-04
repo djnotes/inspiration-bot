@@ -55,7 +55,7 @@ jobs:
           tags: ${{ steps.build-image.outputs.tags }}
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
-          password: ${{ github.token }}
+          password: ${{ secrets.CONTAINER_TOKEN }}
           
 
       
