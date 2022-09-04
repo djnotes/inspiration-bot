@@ -1,8 +1,8 @@
-FROM docker.io/library/alpine
+FROM ghcr.io/djnotes/pyrogram-image:latest
 
-RUN pip3 install apscheduler  PyMySQL
+RUN pip install apscheduler  PyMySQL
 
-RUN pip3 install --pre SQLAlchemy
+RUN pip install --pre SQLAlchemy
 
 COPY . /app
 
