@@ -1,4 +1,4 @@
-FROM docker.io/library/python:3.10
+FROM ghcr.io/djnotes/pyrogram-image:latest
 
 RUN pip3 install pyrogram tgcrypto apscheduler SQLAlchemy PyMySQL
 
