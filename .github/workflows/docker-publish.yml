@@ -8,7 +8,7 @@ name: Inspiration Bot
 on:
   # Commenting out because want image rebuild only on push
   schedule:
-    - cron: '40 21 * * 5'
+    - cron: '0 3 * * 5'  #Run every Friday at 3:00 UTC
   push:
     branches: [ main ]
     # Publish semver tags as releases.
@@ -18,10 +18,10 @@ on:
 
 env:
   # Use docker.io for Docker Hub if empty
-  REGISTRY: ghcr.io
-  # github.repository as <account>/<repo>
-  IMAGE_NAME: ${{ github.repository }}
-  # IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
+  REGISTRY: ghcr.io  
+  IMAGE_NAME: ${{ github.actor }}/inspiration-bot
+  CONTAINERFILE: Containerfile
+  
 
 
 jobs:
@@ -47,7 +47,12 @@ jobs:
           image: ${{ env.IMAGE_NAME }}
           tags: latest ${{ github.sha }}
           containerfiles: |
-            ./Containerfile
+            ${{ env.CONTAINERFILE }}
+
+      - name: Echo Build Outputs
+        run: |
+          echo "${{ toJson(steps.build.outputs) }}"
+          
       - name: Push to registry
         id: push
         uses: redhat-actions/push-to-registry@v2
@@ -62,5 +67,4 @@ jobs:
       
       - name: Echo outputs
         run: |
-          echo "${{ toJson(steps.checkout.outputs) }}\n${{ toJson(steps.build.outputs) }}\n${{ toJson(steps.push.outputs) }}"
-          
+          echo "${{ toJson(steps.push.outputs) }}"
