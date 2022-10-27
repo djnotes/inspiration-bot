@@ -3,3 +3,4 @@ session/
 env
 local/
 __pycache__/
+env.txt

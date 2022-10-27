@@ -1,4 +1,4 @@
-name: GHCR
+name: Inspiration Bot
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -8,7 +8,7 @@ name: GHCR
 on:
   # Commenting out because want image rebuild only on push
   schedule:
-    - cron: '40 21 * * *'
+    - cron: '40 21 * * 5'
   push:
     branches: [ main ]
     # Publish semver tags as releases.
@@ -37,10 +37,11 @@ jobs:
 
     steps:
       - name: Checkout repository
+        id: checkout
         uses: actions/checkout@v3
 
       - name: Buildah Action 
-        id: build-image
+        id: build
         uses: redhat-actions/buildah-build@v2
         with:
           image: ${{ env.IMAGE_NAME }}
@@ -51,14 +52,15 @@ jobs:
         id: push
         uses: redhat-actions/push-to-registry@v2
         with:
-          image: ${{ steps.build-image.outputs.image }}
-          tags: ${{ steps.build-image.outputs.tags }}
+          image: ${{ steps.build.outputs.image }}
+          tags: ${{ steps.build.outputs.tags }}
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
-          password: ${{ secrets.CONTAINER_TOKEN }}
+          password: ${{ secrets.GITHUB_TOKEN }}
           
 
       
       - name: Echo outputs
         run: |
-          echo "${{ toJson(steps.push.outputs) }}"
+          echo "${{ toJson(steps.checkout.outputs) }}\n${{ toJson(steps.build.outputs) }}\n${{ toJson(steps.push.outputs) }}"
+          

@@ -86,9 +86,9 @@ app.run()
 
 
 # Load credentials
-userEnv = open(os.getenv("MARIADB_USER_FILE")).read()
-passwordEnv = open(os.getenv("MARIADB_PASSWORD_FILE")).read()
-databaseEnv = open(os.getenv("MARIADB_DATABASE_FILE")).read()
+userEnv = open(os.getenv("MARIADB_USER")).read()
+passwordEnv = open(os.getenv("MARIADB_PASSWORD")).read()
+databaseEnv = open(os.getenv("MARIADB_DATABASE")).read()
 
 
 engine = create_engine(f"mysql+pymysql://{userEnv}:{passwordEnv}@db/{databaseEnv}", echo=True, future=True)
